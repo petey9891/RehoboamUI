@@ -4,12 +4,12 @@ import { io } from 'socket.io-client';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 export const App = () => {
-	useEffect(() => {
-		const socket = io('127.0.0.1:8081');
-		socket.on('connect', () => {
-			console.log(socket.id);
-		});
-	});
+	// useEffect(() => {
+	// 	const socket = io('127.0.0.1:8081');
+	// 	socket.on('connect', () => {
+	// 		console.log(socket.id);
+	// 	});
+	// });
 
 	return (
 		<>
