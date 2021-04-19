@@ -1,0 +1,71 @@
+// {	
+//     "env": {
+//       "browser": true,
+//       "node": true,
+//     },
+//     "extends": [
+//       "airbnb-base",
+//       "plugin:import/recommended",
+//       "plugin:security/recommended",
+//       "plugin:prettier/recommended",
+//       "prettier"
+//     ],
+//     "plugins": [
+//       "babel",
+//       "import",
+//       "prettier",
+//       "security"
+//     ],
+//       "parser": "babel-eslint",
+//       "parserOptions": {
+//       "ecmaVersion": 6,
+//     "rules": {
+//         "prettier/prettier": ["error", {"useTabs": true, "singleQuote": true, "printWidth": 120, "trailingComma": "none"}],
+//         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+//         "import/no-named-as-default": "off",
+//         "import/prefer-default-export": "off",
+//         "react/require-default-props": "off",
+//         "import/no-extraneous-dependencies": "off"
+//       }
+//   }
+// }
+  
+{	
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "jest": true
+  },
+  "extends": ["airbnb-base", "plugin:security/recommended", "plugin:prettier/recommended", "prettier"],
+	"parser": "babel-eslint",
+  "rules": {
+    "prettier/prettier": ["error", {"useTabs": true, "singleQuote": true, "printWidth": 120, "insertComma": false, "trailingComma": "none"}],
+    "comma-dangle": [2, "never"],
+    "quote-props": ["error", "as-needed"],
+    "no-console": "off",
+    "arrow-body-style": ["error", "as-needed"],
+    "no-param-reassign": [0],
+    "new-cap": [0],
+    "security/detect-object-injection": "off",
+    "no-use-before-define": "off",
+    "func-names": "off",
+    "no-plusplus": "off",
+    "import/no-named-as-default": "off",
+    "no-restricted-syntax": "off",
+    "import/prefer-default-export": "off",
+    "import/first": "warn",
+    "no-underscore-dangle": "off",
+    "guard-for-in": "warn",
+    "class-methods-use-this": "off",
+    "no-unused-expressions": "warn",
+    "linebreak-style": "off",
+    "no-multi-str": "off",
+    "camelcase": "off"
+	},
+	"plugins": [
+		"babel",
+    "prettier",
+    "security"
+  ]
+}

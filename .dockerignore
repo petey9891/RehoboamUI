@@ -1,0 +1,9 @@
+.git
+Dockerfile
+.DS_Store
+.gitignore
+.eslintrc
+.eslintignore
+README.md
+node_modules
+build
