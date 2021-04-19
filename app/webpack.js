@@ -16,7 +16,7 @@ module.exports = {
 		compress: true,
 		historyApiFallback: true,
 		hot: true,
-		port: 8080,
+		port: 8090,
 		publicPath: 'http://localhost:8080',
 		proxy: {
 			'/api': {
