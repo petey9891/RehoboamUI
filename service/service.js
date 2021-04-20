@@ -2,7 +2,6 @@ import express from 'express';
 import Logger from 'bunyan';
 import socket_io from 'socket.io';
 import tls from 'tls';
-import fs from 'fs';
 
 import appConfig from './config';
 
@@ -25,15 +24,6 @@ const io = socket_io(server, {
 	}
 });
 
-const COMMANDS = {
-	Ping: 1,
-	Shutdown: 2,
-	OnOff: 3,
-	Brightness: 4,
-	Pulse: 5,
-	Rehoboam: 6
-};
-
 const generateHeader = (type, size = 0) => {
 	const buffer = new Uint8Array(12);
 	buffer[0] = type;
@@ -51,18 +41,24 @@ const generateBody = (value) => {
 	return buffer;
 };
 
-// io.on('connection', (client) => {
-// 	const socket = tls.connect(config.socketConfig, () => {
-// 		const headerBuffer = generateHeader(COMMANDS.OnOff);
-// 		const bodyBuffer = generateBody(50);
+io.on('connection', (client) => {
+	const socket = tls.connect(config.socketConfig, () => {});
 
-// 		const buffer = new Uint8Array([...headerBuffer, ...bodyBuffer]);
+	client.on('command', (data) => {
+		if (data.header) {
+			const headerBuffer = generateHeader(data.header);
 
-// 		console.log('sending data to client...\n');
-// 		socket.write(buffer);
-// 	});
+			let bodyBuffer = [];
+			if (data.body) {
+				bodyBuffer = generateBody(data.body);
+			}
 
-// 	client.on('disconnect', () => {
-// 		console.log('buh bye');
-// 	});
-// });
+			const buffer = new Uint8Array([...headerBuffer, ...bodyBuffer]);
+			socket.write(buffer);
+		}
+	});
+
+	client.on('disconnect', () => {
+		socket.end();
+	});
+});

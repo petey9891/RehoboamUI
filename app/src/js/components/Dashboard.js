@@ -1,7 +1,8 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect } from 'react';
 import { Disclosure } from '@headlessui/react';
-// import { io } from 'socket.io-client';
 import styled from 'styled-components';
+
+import SocketManager from '../managers/SocketManager';
 
 import Color from './controls/Color';
 import Power from './controls/Power';
@@ -19,12 +20,13 @@ const ControlsContainer = styled.div.attrs({
 `;
 
 export const Dashboard = () => {
-	// useEffect(() => {
-	// 	const socket = io('127.0.0.1:8081');
-	// 	socket.on('connect', () => {
-	// 		console.log(socket.id);
-	// 	});
-	// });
+	useEffect(() => {
+		SocketManager.manager.initialize();
+
+		return () => {
+			SocketManager.manager.end();
+		};
+	});
 
 	return (
 		<div>

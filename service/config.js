@@ -6,9 +6,9 @@ export default () => {
 	switch (process.env.NODE_APP_INSTANCE) {
 		case 'local':
 			selectedEnvironment = {
-				port: 8090,
+				port: 8091,
 				socketConfig: {
-					host: 'localhost',
+					host: 'www.rehoboamcube.com',
 					port: 60000,
 					cert: fs.readFileSync(`${process.cwd()}/../../crypto/rehoboam/dev/client.pem`),
 					key: fs.readFileSync(`${process.cwd()}/../../crypto/rehoboam/dev/client.key`),
@@ -18,7 +18,7 @@ export default () => {
 			break;
 		case 'prod':
 			selectedEnvironment = {
-				port: 8090,
+				port: 8091,
 				socketConfig: {
 					host: 'www.rehoboamcube.com',
 					port: 60000,

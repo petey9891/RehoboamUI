@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Switch } from '@headlessui/react';
 
+import SocketManager from '../../managers/SocketManager';
+
 import Tile from '../common/Tile';
+// import Slider from '../common/Slider';
 
 const InnerContainer = styled.div`
 	display: flex;
@@ -12,7 +15,18 @@ const InnerContainer = styled.div`
 `;
 
 export const Brightness = ({ position }) => {
-	const [enabled, setEnabled] = useState(false);
+	const [display, setDisplay] = useState(true);
+	// const [brightness, setBrightness] = useState(100);
+
+	const handleDisplay = () => {
+		setDisplay(!display);
+		SocketManager.manager.toggleDisplay();
+	};
+
+	// const handleBrightness = (value) => {
+	// 	setBrightness(value);
+	// 	SocketManager.manager.setBrightness(value);
+	// };
 
 	return (
 		<Tile title="Brightness" position={position}>
@@ -20,20 +34,21 @@ export const Brightness = ({ position }) => {
 				<Switch.Group>
 					<div className="flex items-center">
 						<Switch
-							checked={enabled}
-							onChange={setEnabled}
+							checked={display}
+							onChange={handleDisplay}
 							className={`${
-								enabled ? 'bg-blue-500 bg-opacity-75' : 'bg-gray-200'
+								display ? 'bg-blue-500 bg-opacity-75' : 'bg-gray-200'
 							} relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
 						>
 							<span
 								className={`${
-									enabled ? 'translate-x-6' : 'translate-x-1'
+									display ? 'translate-x-6' : 'translate-x-1'
 								} inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
 							/>
 						</Switch>
 					</div>
 				</Switch.Group>
+				{/* <Slider value={brightness} setValue={handleBrightness} /> */}
 			</InnerContainer>
 		</Tile>
 	);

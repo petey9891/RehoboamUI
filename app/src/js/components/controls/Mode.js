@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { RadioGroup } from '@headlessui/react';
 
+import SocketManager from '../../managers/SocketManager';
+
 import Tile from '../common/Tile';
 
 const modes = [
 	{
-		name: 'Color Pulse',
-		description: 'A color pulsing good time'
-	},
-	{
+		id: 'rehoboam',
 		name: 'Rehoboam',
 		description: 'The ring of terror'
+	},
+	{
+		id: 'colorpulse',
+		name: 'Color Pulse',
+		description: 'A color pulsing good time'
 	}
 ];
 
@@ -27,10 +31,15 @@ const CheckIcon = () => {
 export const Mode = ({ position }) => {
 	const [selected, setSelected] = useState(modes[0]);
 
+	const handleSelected = (mode) => {
+		setSelected(mode);
+		SocketManager.manager.setMode(mode.id);
+	};
+
 	return (
 		<Tile title="Mode" position={position}>
 			<div className="w-full px-10">
-				<RadioGroup value={selected} onChange={setSelected}>
+				<RadioGroup value={selected} onChange={handleSelected}>
 					<RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
 					<div className="space-y-2">
 						{modes.map((mode) => (
