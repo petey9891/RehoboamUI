@@ -3,7 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-	entry: './src/index.js',
+	entry: ['./src/js/index.js', './src/css/rehoboam.css'],
 	mode: 'development',
 	output: {
 		filename: 'main.bundle.js',
@@ -17,10 +17,10 @@ module.exports = {
 		historyApiFallback: true,
 		hot: true,
 		port: 8090,
-		publicPath: 'http://localhost:8080',
+		publicPath: 'http://localhost:8090',
 		proxy: {
 			'/api': {
-				target: 'http://localhost:8090',
+				target: 'http://localhost:8091',
 				secure: false
 			}
 		}
@@ -28,7 +28,11 @@ module.exports = {
 	module: {
 		rules: [
 			{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-			{ test: /\.css$/i, use: ['style-loader', 'css-loader'] }
+			{
+				test: /\.css$|\.scss$/,
+				sideEffects: true,
+				use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+			}
 		]
 	},
 	plugins: [
