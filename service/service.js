@@ -46,7 +46,7 @@ io.on('connection', (client) => {
 
 	client.on('command', (data) => {
 		if (data.header) {
-			const headerBuffer = generateHeader(data.header);
+			const headerBuffer = generateHeader(data.header, data.body ? 1 : 0);
 
 			let bodyBuffer = [];
 			if (data.body) {

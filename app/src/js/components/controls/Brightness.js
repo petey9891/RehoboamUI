@@ -6,7 +6,7 @@ import { Switch } from '@headlessui/react';
 import SocketManager from '../../managers/SocketManager';
 
 import Tile from '../common/Tile';
-// import Slider from '../common/Slider';
+import Slider from '../common/Slider';
 
 const InnerContainer = styled.div`
 	display: flex;
@@ -16,17 +16,17 @@ const InnerContainer = styled.div`
 
 export const Brightness = ({ position }) => {
 	const [display, setDisplay] = useState(true);
-	// const [brightness, setBrightness] = useState(100);
+	const [brightness, setBrightness] = useState(100);
 
 	const handleDisplay = () => {
 		setDisplay(!display);
 		SocketManager.manager.toggleDisplay();
 	};
 
-	// const handleBrightness = (value) => {
-	// 	setBrightness(value);
-	// 	SocketManager.manager.setBrightness(value);
-	// };
+	const handleBrightness = (value) => {
+		setBrightness(value);
+		SocketManager.manager.setBrightness(value);
+	};
 
 	return (
 		<Tile title="Brightness" position={position}>
@@ -48,7 +48,7 @@ export const Brightness = ({ position }) => {
 						</Switch>
 					</div>
 				</Switch.Group>
-				{/* <Slider value={brightness} setValue={handleBrightness} /> */}
+				<Slider value={brightness} setValue={handleBrightness} />
 			</InnerContainer>
 		</Tile>
 	);
