@@ -25,7 +25,7 @@ const Tile = ({ title, children, position, minHeight, toggle, value, setValue })
 	<TileContainer className={`${toggle && !value ? 'bg-gray-300' : ''} ${position}`} minHeight={minHeight}>
 		<InnerContainer className="w-full h-full">
 			<TileHeader title={title} toggle={toggle} value={value} setValue={setValue} />
-			<ContentContainer className="w-full h-full -mt-4">{children}</ContentContainer>
+			<ContentContainer className="w-full h-full -mt-2">{children}</ContentContainer>
 		</InnerContainer>
 	</TileContainer>
 );

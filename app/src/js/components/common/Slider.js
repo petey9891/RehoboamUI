@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 const trackH = '0.4em';
 const thumbD = '1.5em';
 const trackC = '#ccced0';
-const filllC = '#ffc069';
+const filllC = '#3b83f6';
 
 const track = css`
 	box-sizing: border-box;
@@ -23,6 +23,7 @@ const trackFill = css`
 	background-size: var(--sx) 6px, calc(100% - var(--sx)) 4px;
 	background-position: left center, right center;
 	background-repeat: no-repeat;
+	opacity: 0.75;
 `;
 
 const fill = css`
@@ -121,8 +122,9 @@ export const Slider = ({ value, setValue }) => {
 		<Input
 			onInput={(e) => setValue(e.target.value)}
 			type="range"
+			className="w-1/2"
+			value={value}
 			style={{
-				width: '100%',
 				'--min': 0,
 				'--max': 100,
 				'--val': value
