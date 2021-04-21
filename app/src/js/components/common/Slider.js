@@ -134,7 +134,7 @@ export const Slider = ({ value, setValue }) => {
 };
 
 Slider.propTypes = {
-	value: PropTypes.number,
+	value: PropTypes.string,
 	setValue: PropTypes.func
 };
 
