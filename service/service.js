@@ -42,7 +42,7 @@ const generateBody = (value) => {
 };
 
 io.on('connection', (client) => {
-	const socket = tls.connect(config.socketConfig, () => {});
+	const socket = tls.connect(config.socketConfig);
 
 	client.on('command', (data) => {
 		if (data.header) {

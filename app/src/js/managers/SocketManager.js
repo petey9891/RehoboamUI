@@ -25,7 +25,7 @@ class SocketManager {
 	}
 
 	shutdown() {
-		this.socket.emit('command', { header: COMMANDS.shutdown });
+		this.socket.emit('command', { header: COMMANDS.Shutdown });
 	}
 
 	toggleDisplay() {

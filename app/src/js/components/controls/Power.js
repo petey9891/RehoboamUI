@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Tile from '../common/Tile';
+import SocketManager from '../../managers/SocketManager';
 
 const InnerContainer = styled.div`
 	display: flex;
@@ -101,6 +102,7 @@ export const Power = ({ position }) => {
 	const handlePowerClick = () => {
 		if (!failsafe) {
 			setPower(!power);
+			SocketManager.manager.shutdown();
 		}
 	};
 
