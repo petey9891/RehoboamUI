@@ -15,4 +15,4 @@ COPY --from=build /app/node_modules /app/node_modules
 
 WORKDIR /app
 
-CMD ["dist/service.js"]
+CMD ["dist/server.js"]
