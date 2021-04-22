@@ -1,6 +1,7 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isProd = process.env.NODE_APP_INSTANCE === 'prod'
 
@@ -9,8 +10,7 @@ module.exports = {
 	mode: isProd ? 'production' : 'development',
 	output: {
 		filename: 'main.bundle.js',
-		path: path.resolve(__dirname, 'dist/'),
-		publicPath: '/rehoboam/'
+		path: path.resolve(__dirname, './dist')
 	},
 	resolve: { extensions: ['*', '.js', '.jsx'] },
 	devServer: {
@@ -43,6 +43,10 @@ module.exports = {
 	plugins: [
 		new CopyPlugin({
 			patterns: [{ from: 'src/index.html' }]
+		}),
+		new HtmlWebpackPlugin({
+			template: path.join(__dirname, 'src', 'index.html'),
+			inject: false
 		}),
 		new webpack.HotModuleReplacementPlugin()
 	]
