@@ -11,6 +11,7 @@ RUN npm prune --production
 FROM gcr.io/distroless/nodejs:12
 COPY --from=build /app/build /app/build
 COPY --from=build /app/node_modules /app/node_modules
+COPY --from=build /app/crypto /app/crypto
 
 WORKDIR /app
 
