@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_APP_INSTANCE=local webpack serve --config ./webpack.js",
+    "dev": "NODE_APP_INSTANCE=local webpack-dev-server --config ./webpack.js",
     "build-prod": "babel ./src/server.js -d dist",
     "build": "NODE_APP_INSTANCE=prod webpack --config ./webpack.prod.js"
   },
