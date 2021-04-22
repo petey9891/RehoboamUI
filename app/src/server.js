@@ -1,6 +1,7 @@
 import express from 'express';
 import Logger from 'bunyan';
 import fs from 'fs';
+import _url from 'url';
 import path from 'path';
 
 const app = express();
@@ -20,7 +21,13 @@ const CONTENT_TYPE_HEADER = {
 };
 
 app.get('/*', (req, res) => {
-	let { url } = req;
+	let url = _url.parse(req.url).pathname.replace('/', '');
+
+	// const { url } = req.url;
+	// let splitUrl = url.split('/');
+	// console.log(splitUrl);
+	// const fileName = splitUrl[splitUrl.length - 1];
+
 	console.log(`pre-url: ${url}`);
 	let ext = path.extname(url).slice(1);
 	console.log(`ext: ${ext}`);
@@ -31,14 +38,14 @@ app.get('/*', (req, res) => {
 
 	console.log(`final-url: ${url}`);
 	console.log(`ext: ${ext}`);
-	console.log(`dist${url}`)
+	console.log(`${process.cwd()}/dist/${url}`);
 
-    fs.readFile(`dist${url}`, (err, data) => {	// eslint-disable-line
+	fs.readFile(`${process.cwd()}/dist/${url}`, (err, data) => {	// eslint-disable-line
 		if (err) {
 			console.log(err);
 			console.log(`can't find shit yo`);
 			console.log(url);
-			console.log(`dist${url}`);
+			console.log(`${process.cwd()}/dist/${url}`);
 			res.writeHead(404);
 			res.end("can't find shit yo");
 		} else {

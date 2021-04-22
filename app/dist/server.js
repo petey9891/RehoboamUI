@@ -6,6 +6,8 @@ var _bunyan = _interopRequireDefault(require("bunyan"));
 
 var _fs = _interopRequireDefault(require("fs"));
 
+var _url2 = _interopRequireDefault(require("url"));
+
 var _path = _interopRequireDefault(require("path"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -33,7 +35,12 @@ var CONTENT_TYPE_HEADER = {
   js: 'text/javascript'
 };
 app.get('/*', function (req, res) {
-  var url = req.url;
+  var url = _url2["default"].parse(req.url).pathname.replace('/', ''); // const { url } = req.url;
+  // let splitUrl = url.split('/');
+  // console.log(splitUrl);
+  // const fileName = splitUrl[splitUrl.length - 1];
+
+
   console.log("pre-url: ".concat(url));
 
   var ext = _path["default"].extname(url).slice(1);
@@ -47,15 +54,15 @@ app.get('/*', function (req, res) {
 
   console.log("final-url: ".concat(url));
   console.log("ext: ".concat(ext));
-  console.log("dist".concat(url));
+  console.log("".concat(process.cwd(), "/dist/").concat(url));
 
-  _fs["default"].readFile("dist".concat(url), function (err, data) {
+  _fs["default"].readFile("".concat(process.cwd(), "/dist/").concat(url), function (err, data) {
     // eslint-disable-line
     if (err) {
       console.log(err);
       console.log("can't find shit yo");
       console.log(url);
-      console.log("dist".concat(url));
+      console.log("".concat(process.cwd(), "/dist/").concat(url));
       res.writeHead(404);
       res.end("can't find shit yo");
     } else {
