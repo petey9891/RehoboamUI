@@ -28,7 +28,7 @@ app.get('/*', (req, res) => {
 		url = '/index.html';
 	}
 
-    fs.readFile(`${process.cwd()}/dist${url}`, (err, data) => {	// eslint-disable-line
+    fs.readFile(`dist${url}`, (err, data) => {	// eslint-disable-line
 		if (err) {
 			console.log(`can't find shit yo`);
 			console.log(url);
