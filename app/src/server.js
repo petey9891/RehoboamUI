@@ -21,18 +21,24 @@ const CONTENT_TYPE_HEADER = {
 
 app.get('/*', (req, res) => {
 	let { url } = req;
+	console.log(`pre-url: ${url}`);
 	let ext = path.extname(url).slice(1);
-
+	console.log(`ext: ${ext}`);
 	if (ext === '') {
 		ext = 'html';
 		url = '/index.html';
 	}
 
+	console.log(`final-url: ${url}`);
+	console.log(`ext: ${ext}`);
+	console.log(`dist${url}`)
+
     fs.readFile(`dist${url}`, (err, data) => {	// eslint-disable-line
 		if (err) {
+			console.log(err);
 			console.log(`can't find shit yo`);
 			console.log(url);
-			console.log(`${process.cwd()}/dist${url}`);
+			console.log(`dist${url}`);
 			res.writeHead(404);
 			res.end("can't find shit yo");
 		} else {
