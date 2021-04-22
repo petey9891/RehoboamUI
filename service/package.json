@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "local": "NODE_APP_INSTANCE=local nodemon service.js --exec babel-node",
     "clean-unix": "rm -rf build && mkdir build",
-    "build-server": "babel -d ./build ./service.js",
+    "build-server": "babel -d ./build ./src",
     "build-unix": "npm run clean-unix && NODE_APP_INSTANCE='prod' npm run build-server"
   },
   "author": "",

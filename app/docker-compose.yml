@@ -2,6 +2,7 @@ version: '3'
 services:
   web:
     image: rehoboam-ui:latest
+    container_name: rehoboam-ui
     expose:
       - 8090
     environment: 

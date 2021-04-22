@@ -1,7 +1,8 @@
 version: '3'
 services:
-  web:
+  api:
     image: rehoboam-ui-service:latest
+    container_name: rehoboam-ui-service
     expose:
       - 8091
     environment:
