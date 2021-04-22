@@ -30,8 +30,11 @@ app.get('/*', (req, res) => {
 
     fs.readFile(`${process.cwd()}/dist${url}`, (err, data) => {	// eslint-disable-line
 		if (err) {
+			console.log(`can't find shit yo`);
+			console.log(url);
+			console.log(`${process.cwd()}/dist${url}`);
 			res.writeHead(404);
-			res.end('Not found');
+			res.end("can't find shit yo");
 		} else {
 			switch (ext) {
 				case CONTENT_TYPE.html:

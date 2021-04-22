@@ -6,7 +6,7 @@ docker stop rehoboam-ui
 docker rm rehoboam-ui
 docker rmi rehoboam-ui
 
-cd /app
+cd app
 
 docker build -t rehoboam-ui .
 
