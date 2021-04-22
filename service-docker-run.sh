@@ -6,7 +6,7 @@ docker stop rehoboam-ui-service
 docker rm rehoboam-ui-service
 docker rmi rehoboam-ui-service
 
-cd /service
+cd service
 
 docker build -t rehoboam-ui-service .
 
