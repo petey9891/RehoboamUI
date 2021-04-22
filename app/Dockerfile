@@ -5,8 +5,8 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build
-RUN npm run build-prod
+# RUN npm run build
+# RUN npm run build-prod
 RUN npm prune --production
 
 FROM gcr.io/distroless/nodejs:12
