@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Disclosure } from '@headlessui/react';
 import styled from 'styled-components';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import SocketManager from '../managers/SocketManager';
 
@@ -28,6 +30,14 @@ export const Dashboard = () => {
 		};
 	});
 
+	const handleSignout = async () => {
+		try {
+			await firebase.auth().signOut();
+		} catch (error) {
+			// do nothing
+		}
+	};
+
 	return (
 		<div>
 			<Disclosure as="nav" className="bg-gray-900">
@@ -40,6 +50,17 @@ export const Dashboard = () => {
 									src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
 									alt="Workflow"
 								/>
+							</div>
+						</div>
+						<div className="hidden md:block">
+							<div className="ml-10 flex items-baseline space-x-4">
+								<button
+									type="button"
+									onClick={handleSignout}
+									className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+								>
+									Sign out
+								</button>
 							</div>
 						</div>
 					</div>
