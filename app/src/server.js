@@ -25,7 +25,7 @@ app.get('/*', (req, res) => {
 
 	if (ext === '') {
 		ext = 'html';
-		url = '/rehoboam/index.html';
+		url = '/index.html';
 	}
 
     fs.readFile(`${process.cwd()}/dist${url}`, (err, data) => {	// eslint-disable-line

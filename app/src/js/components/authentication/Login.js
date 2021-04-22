@@ -15,7 +15,7 @@ export const Login = () => {
 				setVerifying(true);
 				await firebase.auth().signInWithEmailAndPassword(email, password);
 				setVerifying(false);
-				push('/dashboard');
+				push('/cube/dashboard');
 			} catch (error) {
 				setVerifying(false);
 			}

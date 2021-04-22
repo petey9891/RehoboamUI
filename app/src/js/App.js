@@ -8,7 +8,7 @@ import Dashboard from './components/Dashboard';
 
 export const App = () => (
 	<>
-		<Router>
+		<Router basename="/cube">
 			<RouteValidation>
 				<Route exact path="/" component={Login} />
 				<Route exact path="/dashboard" component={Dashboard} />

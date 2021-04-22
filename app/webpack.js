@@ -9,7 +9,7 @@ module.exports = {
 	mode: isProd ? 'production' : 'development',
 	output: {
 		filename: 'main.bundle.js',
-		path: path.resolve(__dirname, 'dist/rehoboam'),
+		path: path.resolve(__dirname, 'dist/'),
 		publicPath: '/rehoboam/'
 	},
 	resolve: { extensions: ['*', '.js', '.jsx'] },
@@ -19,7 +19,7 @@ module.exports = {
 		historyApiFallback: true,
 		hot: true,
 		port: 8090,
-		publicPath: 'http://localhost:8090',
+		publicPath: 'http://localhost:8090/',
 		proxy: {
 			'/api': {
 				target: 'http://localhost:8091',

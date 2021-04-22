@@ -11,7 +11,7 @@ const RouteValidation = ({ children }) => {
 	firebase.auth().onAuthStateChanged((user) => {
 		if (user) {
 			// User is signed in.
-			push('/dashboard');
+			push('/cube/dashboard');
 			setDidFetch(true);
 			return;
 		}
