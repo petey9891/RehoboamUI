@@ -8,7 +8,7 @@ docker rmi rehoboam-ui
 
 cd /app
 
-docker built -t rehoboam-ui .
+docker build -t rehoboam-ui .
 
 docker-compose up -d
 
