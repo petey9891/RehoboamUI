@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web:
+    image: rehoboam-ui-service:latest
+    expose:
+      - 8091
+    environment:
+      - VIRTUAL_HOST=rehoboamcube.com, www.rehoboamcube.com
+      - VIRTUAL_PORT=8091
+      - NODE_APP_INSTANCE=prod
+      - LETSENCRYPT_HOST=rehoboamcube.com, www.rehoboamcube.com
+      - LETSENCRYPT_EMAIL=16apterson@gmail.com
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
