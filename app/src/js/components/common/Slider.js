@@ -134,7 +134,7 @@ export const Slider = ({ value, setValue }) => {
 };
 
 Slider.propTypes = {
-	value: PropTypes.string,
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	setValue: PropTypes.func
 };
 

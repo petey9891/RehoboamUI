@@ -35,6 +35,7 @@ const ColorContainer = styled.div`
 
 const ColorPicker = styled(RgbColorPicker)`
 	height: 90% !important;
+	width: 100% !important;
 `;
 
 const presetColors = ['#cd9323', '#1a53d8', '#9a2151', '#0d6416', '#8d2808'];
@@ -61,7 +62,7 @@ export const Color = ({ position }) => {
 		<Tile title="Color" position={position}>
 			<InnerContainer className="w-full h-full px-10">
 				<ColorContainer className="bg-gray-100 w-full h-3/4">
-					<ColorPicker className="w-full" color={color} onChange={handleColorSelect} />
+					<ColorPicker color={color} onChange={handleColorSelect} />
 					<Picker className="w-full">
 						{presetColors.map((presetColor) => (
 							<Swatch

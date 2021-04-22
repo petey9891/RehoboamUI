@@ -3,7 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-	entry: ['./src/js/index.js', './src/css/rehoboam.css'],
+	entry: ['regenerator-runtime/runtime', './src/js/index.js', './src/css/rehoboam.css'],
 	mode: 'development',
 	output: {
 		filename: 'main.bundle.js',
