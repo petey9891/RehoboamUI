@@ -3,14 +3,14 @@ const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const isProd = process.env.NODE_APP_INSTANCE === 'prod'
 
 module.exports = {
 	entry: ['regenerator-runtime/runtime', './src/js/index.js', './src/css/rehoboam.css'],
-	mode: isProd ? 'production' : 'development',
+	mode: 'development',
 	output: {
 		filename: 'main.bundle.js',
-		path: path.resolve(__dirname, './dist')
+		path: path.resolve(__dirname, './dist'),
+		publicPath: '/'
 	},
 	resolve: { extensions: ['*', '.js', '.jsx'] },
 	devServer: {
@@ -26,9 +26,6 @@ module.exports = {
 				secure: false
 			}
 		}
-	},
-	optimization: {
-		minimize: isProd,
 	},
 	module: {
 		rules: [

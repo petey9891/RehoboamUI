@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_APP_INSTANCE=local webpack serve --config ./webpack.js",
     "build-prod": "babel ./src/server.js -d dist",
-    "build": "NODE_APP_INSTANCE=prod webpack --config ./webpack.js"
+    "build": "NODE_APP_INSTANCE=prod webpack --config ./webpack.prod.js"
   },
   "repository": {
     "type": "git",

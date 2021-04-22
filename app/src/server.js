@@ -22,12 +22,6 @@ const CONTENT_TYPE_HEADER = {
 
 app.get('/*', (req, res) => {
 	let url = _url.parse(req.url).pathname.replace('/', '');
-
-	// const { url } = req.url;
-	// let splitUrl = url.split('/');
-	// console.log(splitUrl);
-	// const fileName = splitUrl[splitUrl.length - 1];
-
 	console.log(`pre-url: ${url}`);
 	let ext = path.extname(url).slice(1);
 	console.log(`ext: ${ext}`);

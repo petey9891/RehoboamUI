@@ -35,11 +35,7 @@ var CONTENT_TYPE_HEADER = {
   js: 'text/javascript'
 };
 app.get('/*', function (req, res) {
-  var url = _url2["default"].parse(req.url).pathname.replace('/', ''); // const { url } = req.url;
-  // let splitUrl = url.split('/');
-  // console.log(splitUrl);
-  // const fileName = splitUrl[splitUrl.length - 1];
-
+  var url = _url2["default"].parse(req.url).pathname.replace('/', '');
 
   console.log("pre-url: ".concat(url));
 
