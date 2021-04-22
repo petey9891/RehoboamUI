@@ -13,6 +13,4 @@ FROM gcr.io/distroless/nodejs:12
 COPY --from=build /app/dist /app/dist
 COPY --from=build /app/node_modules /app/node_modules
 
-WORKDIR /app
-
-CMD ["dist/server.js"]
+CMD ["app/dist/server.js"]
