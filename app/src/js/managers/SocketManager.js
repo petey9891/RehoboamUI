@@ -17,7 +17,7 @@ class SocketManager {
 	}
 
 	initialize() {
-		this.socket = io('127.0.0.1:8091');
+		this.socket = io('wss://www.rehoboamcube.com');
 	}
 
 	end() {
