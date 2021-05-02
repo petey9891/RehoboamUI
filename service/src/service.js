@@ -42,7 +42,10 @@ const generateBody = (value) => {
 };
 
 io.on('connection', (client) => {
-	const socket = tls.connect(config.socketConfig);
+	console.log('new connection');
+	const socket = tls.connect(config.socketConfig, () => {
+		console.log('connected to server relay');
+	});
 
 	client.on('command', (data) => {
 		if (data.header) {
