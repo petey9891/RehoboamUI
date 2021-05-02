@@ -37,28 +37,16 @@ var CONTENT_TYPE_HEADER = {
 app.get('/*', function (req, res) {
   var url = _url2["default"].parse(req.url).pathname.replace('/', '');
 
-  console.log("pre-url: ".concat(url));
-
   var ext = _path["default"].extname(url).slice(1);
-
-  console.log("ext: ".concat(ext));
 
   if (ext === '') {
     ext = 'html';
     url = '/index.html';
   }
 
-  console.log("final-url: ".concat(url));
-  console.log("ext: ".concat(ext));
-  console.log("".concat(process.cwd(), "/dist/").concat(url));
-
   _fs["default"].readFile("".concat(process.cwd(), "/dist/").concat(url), function (err, data) {
     // eslint-disable-line
     if (err) {
-      console.log(err);
-      console.log("can't find shit yo");
-      console.log(url);
-      console.log("".concat(process.cwd(), "/dist/").concat(url));
       res.writeHead(404);
       res.end("can't find shit yo");
     } else {

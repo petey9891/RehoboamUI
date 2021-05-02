@@ -8,7 +8,7 @@ export default () => {
 			selectedEnvironment = {
 				port: 8091,
 				socketConfig: {
-					host: 'www.octiumlabs.com',
+					host: 'www.rehoboamcube.com',
 					port: 60000,
 					cert: fs.readFileSync(`${process.cwd()}/../../crypto/rehoboam/dev/client.pem`),
 					key: fs.readFileSync(`${process.cwd()}/../../crypto/rehoboam/dev/client.key`),
@@ -20,7 +20,7 @@ export default () => {
 			selectedEnvironment = {
 				port: 8091,
 				socketConfig: {
-					host: 'www.octiumlabs.com',
+					host: 'www.rehoboamcube.com',
 					port: 60000,
 					cert: fs.readFileSync(`${process.cwd()}/crypto/client.pem`),
 					key: fs.readFileSync(`${process.cwd()}/crypto/client.key`),
