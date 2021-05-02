@@ -7,7 +7,7 @@ services:
       - 8090
     environment: 
       - VIRTUAL_HOST=rehoboamcube.com, www.rehoboamcube.com
-      - VIRTUAL_PORT=8083
+      - VIRTUAL_PORT=8090
       - NODE_APP_INSTANCE=prod
       - LETSENCRYPT_HOST=rehoboamcube.com, www.rehoboamcube.com
       - LETSENCRYPT_EMAIL=16apterson@gmail.com
