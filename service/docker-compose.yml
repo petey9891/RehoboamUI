@@ -5,6 +5,7 @@ services:
     container_name: rehoboam-ui-service
     expose:
       - 8091
+      - 60000
     environment:
       - VIRTUAL_HOST=api.rehoboamcube.com
       - VIRTUAL_PORT=8091
