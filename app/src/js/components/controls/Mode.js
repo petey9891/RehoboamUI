@@ -7,11 +7,11 @@ import SocketManager from '../../managers/SocketManager';
 import Tile from '../common/Tile';
 
 const modes = [
-	// {
-	// 	id: 'rehoboam',
-	// 	name: 'Rehoboam',
-	// 	description: 'The ring of terror'
-	// },
+	{
+		id: 'rehoboam',
+		name: 'Rehoboam',
+		description: 'The ring of terror'
+	},
 	{
 		id: 'colorpulse',
 		name: 'Color Pulse',
