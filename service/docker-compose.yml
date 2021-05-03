@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 services:
   api:
     image: rehoboam-ui-service:latest
@@ -21,7 +21,3 @@ networks:
     name: nginx-proxy
   rehoboam:
     name: rehoboam
-# networks:
-#   default:
-#     external:
-#       name: nginx-proxy
