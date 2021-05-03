@@ -20,7 +20,7 @@ export default () => {
 			selectedEnvironment = {
 				port: 8091,
 				socketConfig: {
-					host: '127.0.0.1',
+					host: 'server-relay:60000',
 					port: 60000,
 					cert: fs.readFileSync(`${process.cwd()}/crypto/client.pem`),
 					key: fs.readFileSync(`${process.cwd()}/crypto/client.key`),
