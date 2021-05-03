@@ -17,7 +17,7 @@ class SocketManager {
 	}
 
 	initialize() {
-		this.socket = io('wss://www.rehoboamcube.com/api');
+		this.socket = io('wss://api.rehoboamcube.com');
 	}
 
 	end() {
