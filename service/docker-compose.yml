@@ -5,7 +5,6 @@ services:
     container_name: rehoboam-ui-service
     expose:
       - 8091
-      # - 60000
     environment:
       - VIRTUAL_HOST=api.rehoboamcube.com
       - VIRTUAL_PORT=8091
@@ -14,10 +13,7 @@ services:
       - LETSENCRYPT_EMAIL=16apterson@gmail.com
     networks:
       - nginx-proxy
-      # - rehoboam
 
 networks:
   nginx-proxy:
     name: nginx-proxy
-  # rehoboam:
-  #   name: rehoboam

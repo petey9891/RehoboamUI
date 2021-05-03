@@ -20,7 +20,6 @@ export default () => {
 			selectedEnvironment = {
 				port: 8091,
 				socketConfig: {
-					// host: 'server-relay',
 					host: 'www.rehoboamcube.com',
 					port: 60000,
 					cert: fs.readFileSync(`${process.cwd()}/crypto/client.pem`),
