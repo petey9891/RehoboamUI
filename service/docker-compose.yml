@@ -12,12 +12,24 @@ services:
       - LETSENCRYPT_HOST=api.rehoboamcube.com
       - LETSENCRYPT_EMAIL=16apterson@gmail.com
     networks:
+      - nginx-proxy
       - rehoboam
 
-
 networks:
-  default:
-    external:
-      name: nginx-proxy
+  nginx-proxy:
+    external: true
   rehoboam:
-      external: true
+    external: true
+      # networks:
+      #   default:
+      #     external:
+      #       name: nginx-proxy
+      #   rehoboam:
+      #       external: true
+
+# networks:
+#   default:
+#     external:
+#       name: nginx-proxy
+#   rehoboam:
+#       external: true
