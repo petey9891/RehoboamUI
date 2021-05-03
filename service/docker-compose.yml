@@ -11,25 +11,10 @@ services:
       - NODE_APP_INSTANCE=prod
       - LETSENCRYPT_HOST=api.rehoboamcube.com
       - LETSENCRYPT_EMAIL=16apterson@gmail.com
-    networks:
-      - nginx-proxy
-      - rehoboam
 
 networks:
-  nginx-proxy:
-    external: true
+  default:
+    external:
+      name: nginx-proxy
   rehoboam:
-    external: true
-      # networks:
-      #   default:
-      #     external:
-      #       name: nginx-proxy
-      #   rehoboam:
-      #       external: true
-
-# networks:
-#   default:
-#     external:
-#       name: nginx-proxy
-#   rehoboam:
-#       external: true
+      external: true
