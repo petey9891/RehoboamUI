@@ -47,6 +47,10 @@ io.on('connection', (client) => {
 		console.log('connected to server relay');
 	});
 
+	socket.on('error', (error) => {
+		console.log(error);
+	});
+
 	client.on('command', (data) => {
 		if (data.header) {
 			const headerBuffer = generateHeader(data.header, data.body ? 1 : 0);
