@@ -6,7 +6,8 @@ const COMMANDS = {
 	OnOff: 3,
 	Brightness: 4,
 	Pulse: 5,
-	Rehoboam: 6
+	Rehoboam: 6,
+	SolidColor: 7
 };
 
 class SocketManager {
@@ -33,7 +34,12 @@ class SocketManager {
 	}
 
 	setBrightness(value) {
-		this.socket.emit('command', { header: COMMANDS.Brightness, body: value });
+		this.socket.emit('command', { header: COMMANDS.Brightness, body: [value] });
+	}
+
+	setSolidColor(value) {
+		const data = Object.values(value);
+		this.socket.emit('command', { header: COMMANDS.SolidColor, body: data });
 	}
 
 	setMode(value) {

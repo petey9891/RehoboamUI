@@ -36,8 +36,8 @@ const generateHeader = (type, size = 0) => {
 };
 
 const generateBody = (value) => {
-	const buffer = new Uint8Array(1);
-	buffer[0] = value;
+	const buffer = new Uint8Array(value.length);
+	buffer.set(value);
 	return buffer;
 };
 
@@ -50,8 +50,11 @@ io.on('connection', (client) => {
 
 	client.on('command', (data) => {
 		if (data.header) {
-			const headerBuffer = generateHeader(data.header, data.body ? 1 : 0);
+			// Don't accept anything over 3 bytes
+			const bodyLength = data.body ? data.body.length : 0;
+			if (bodyLength > 3) return;
 
+			const headerBuffer = generateHeader(data.header, bodyLength);
 			let bodyBuffer = [];
 			if (data.body) {
 				bodyBuffer = generateBody(data.body);

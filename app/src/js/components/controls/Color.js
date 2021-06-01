@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { RgbColorPicker } from 'react-colorful';
 
 import Tile from '../common/Tile';
+import SocketManager from '../../managers/SocketManager';
 
 const InnerContainer = styled.div`
 	display: flex;
@@ -51,11 +52,13 @@ const hexToRgb = (hex) => {
 		: null;
 };
 
-export const Color = ({ position }) => {
+export const Color = ({ position, setMode }) => {
 	const [color, setColor] = useState();
 
 	const handleColorSelect = (value) => {
 		setColor(value);
+		setMode(null);
+		SocketManager.manager.setSolidColor(value);
 	};
 
 	return (
@@ -82,7 +85,8 @@ export const Color = ({ position }) => {
 };
 
 Color.propTypes = {
-	position: PropTypes.string
+	position: PropTypes.string,
+	setMode: PropTypes.func
 };
 
 export default Color;

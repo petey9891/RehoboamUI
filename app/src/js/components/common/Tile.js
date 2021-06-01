@@ -21,7 +21,7 @@ const ContentContainer = styled.div`
 `;
 
 const Tile = ({ title, children, position, minHeight, toggle, value, setValue }) => (
-	<TileContainer className={`${toggle && !value ? 'bg-gray-300' : 'bg-white'} ${position}`} minHeight={minHeight}>
+	<TileContainer className={`${toggle && !value ? 'bg-gray-300' : 'bg-gray-50'} ${position}`} minHeight={minHeight}>
 		<InnerContainer className="w-full h-full">
 			<TileHeader title={title} toggle={toggle} value={value} setValue={setValue} />
 			<ContentContainer className="w-full h-full -mt-2">{children}</ContentContainer>

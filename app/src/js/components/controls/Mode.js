@@ -1,23 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { RadioGroup } from '@headlessui/react';
 
 import SocketManager from '../../managers/SocketManager';
-
 import Tile from '../common/Tile';
 
-const modes = [
-	{
-		id: 'rehoboam',
-		name: 'Rehoboam',
-		description: 'The ring of terror'
-	},
-	{
-		id: 'colorpulse',
-		name: 'Color Pulse',
-		description: 'A color pulsing good time'
-	}
-];
+import { APPLICATIONS } from '../../constants/Applications';
 
 const CheckIcon = () => {
 	return (
@@ -28,27 +16,25 @@ const CheckIcon = () => {
 	);
 };
 
-export const Mode = ({ position }) => {
-	const [selected, setSelected] = useState(modes[0]);
-
-	const handleSelected = (mode) => {
-		setSelected(mode);
-		SocketManager.manager.setMode(mode.id);
+export const Mode = ({ position, mode, setMode }) => {
+	const handleSelected = (app) => {
+		setMode(app);
+		SocketManager.manager.setMode(app.id);
 	};
 
 	return (
 		<Tile title="Mode" position={position}>
 			<div className="w-full px-10">
-				<RadioGroup value={selected} onChange={handleSelected}>
+				<RadioGroup value={mode} onChange={handleSelected}>
 					<RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
 					<div className="space-y-2">
-						{modes.map((mode) => (
+						{APPLICATIONS.map((app) => (
 							<RadioGroup.Option
-								key={mode.name}
-								value={mode}
+								key={app.name}
+								value={app}
 								className={({ active, checked }) =>
-									`${active ? 'ring-2 ring-offset-2 ring-offset-blue-300 ring-white ring-opacity-60' : ''}
-							         ${checked ? 'bg-blue-500 bg-opacity-75 text-white' : 'bg-white'}
+									`${active && mode ? 'ring-2 ring-offset-2 ring-offset-blue-300 ring-white ring-opacity-60' : ''}
+							         ${checked && mode ? 'bg-blue-500 bg-opacity-75 text-white' : 'bg-white'}
 							         relative rounded-lg shadow-lg px-5 py-4 cursor-pointer flex focus:outline-none`
 								}
 							>
@@ -61,13 +47,13 @@ export const Mode = ({ position }) => {
 														as="p"
 														className={`font-medium  ${checked ? 'text-white' : 'text-gray-900'}`}
 													>
-														{mode.name}
+														{app.name}
 													</RadioGroup.Label>
 													<RadioGroup.Description
 														as="span"
 														className={`inline ${checked ? 'text-light-blue-100' : 'text-gray-500'}`}
 													>
-														<span>{mode.description}</span>
+														<span>{app.description}</span>
 													</RadioGroup.Description>
 												</div>
 											</div>
@@ -89,7 +75,13 @@ export const Mode = ({ position }) => {
 };
 
 Mode.propTypes = {
-	position: PropTypes.string
+	position: PropTypes.string,
+	mode: PropTypes.shape({
+		id: PropTypes.string,
+		name: PropTypes.string,
+		description: PropTypes.string
+	}),
+	setMode: PropTypes.func
 };
 
 export default Mode;

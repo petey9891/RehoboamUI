@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import styled from 'styled-components';
 import firebase from 'firebase/app';
@@ -22,6 +22,8 @@ const ControlsContainer = styled.div.attrs({
 `;
 
 export const Dashboard = () => {
+	const [mode, setMode] = useState(null);
+
 	useEffect(() => {
 		SocketManager.manager.initialize();
 
@@ -73,10 +75,10 @@ export const Dashboard = () => {
 			</header>
 			<main>
 				<ControlsContainer>
-					<Color position="sm:col-span-2 lg:col-span-1 sm:row-span-2 lg:row-span-full" />
+					<Color position="sm:col-span-2 lg:col-span-1 sm:row-span-2 lg:row-span-full" setMode={setMode} />
 					<Power position="sm:col-span-2 lg:col-span-1 row-span-2" />
 					<Brightness position="sm:col-span-2 lg:col-span-1 row-span-2" />
-					<Mode position="sm:col-span-2 lg:col-span-1 row-span-2" />
+					<Mode position="sm:col-span-2 lg:col-span-1 row-span-2" mode={mode} setMode={setMode} />
 				</ControlsContainer>
 			</main>
 		</div>
