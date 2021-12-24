@@ -7,7 +7,14 @@ const COMMANDS = {
 	Brightness: 4,
 	Pulse: 5,
 	Rehoboam: 6,
-	SolidColor: 7
+	SolidColor: 7,
+	Christmas: 8
+};
+
+export const MODES = {
+	ColorPulse: 'colorpulse',
+	Rehoboam: 'rehoboam',
+	Christmas: 'christmas'
 };
 
 class SocketManager {
@@ -44,10 +51,19 @@ class SocketManager {
 
 	setMode(value) {
 		let mode;
-		if (value === 'colorpulse') {
-			mode = COMMANDS.Pulse;
-		} else {
-			mode = COMMANDS.Rehoboam;
+		switch (value) {
+			case MODES.ColorPulse:
+				mode = COMMANDS.Pulse;
+				break;
+			case MODES.Rehoboam:
+				mode = COMMANDS.Rehoboam;
+				break;
+			case MODES.Christmas:
+				mode = COMMANDS.Christmas;
+				break;
+			default:
+				mode = COMMANDS.Pulse;
+				break;
 		}
 
 		this.socket.emit('command', { header: mode });

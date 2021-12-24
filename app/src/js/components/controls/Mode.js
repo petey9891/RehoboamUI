@@ -23,7 +23,7 @@ export const Mode = ({ position, mode, setMode }) => {
 	};
 
 	return (
-		<Tile title="Mode" position={position}>
+		<Tile title="Mode" position={position} minHeight="330px">
 			<div className="w-full px-10">
 				<RadioGroup value={mode} onChange={handleSelected}>
 					<RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
