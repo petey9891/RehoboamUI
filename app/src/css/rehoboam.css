@@ -15,6 +15,10 @@ body {
     min-height: 280px;
 }
 
+.modeTile {
+    min-height: 330px;
+}
+
 @media (min-width: 640px) {
     .tile {
         grid-column: 1;
@@ -38,7 +42,6 @@ body {
     .modeTile {
         grid-row-start: 5;
         grid-row-end: 6;
-        min-height: 300px;
     }
 }
 
@@ -76,6 +79,15 @@ body {
     .modeTile {
         grid-row-start: 3;
         grid-row-end: 5;
-        max-height: 300px;
     }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    _::-webkit-full-page-media, _:future, :root, .tile { 
+            height: 280px;
+    } 
+
+    _::-webkit-full-page-media, _:future, :root, .colorTile { 
+        height: 576px;
+    } 
 }

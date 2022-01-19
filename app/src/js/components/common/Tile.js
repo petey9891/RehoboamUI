@@ -11,19 +11,21 @@ const TileContainer = styled.div.attrs({ className: 'shadow' })`
 const InnerContainer = styled.div`
 	display: flex;
 	flex-direction: column;
+	height: 100%;
 `;
 
 const ContentContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 100%;
 `;
 
 const Tile = ({ title, className, children, height, toggle, value, setValue }) => (
 	<TileContainer className={`${toggle && !value ? 'bg-gray-300' : 'bg-gray-50'} tile ${className}`} height={height}>
-		<InnerContainer className="w-full h-full">
+		<InnerContainer className="">
 			<TileHeader title={title} toggle={toggle} value={value} setValue={setValue} />
-			<ContentContainer className="w-full h-full -mt-2">{children}</ContentContainer>
+			<ContentContainer className="">{children}</ContentContainer>
 		</InnerContainer>
 	</TileContainer>
 );
