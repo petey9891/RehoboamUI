@@ -6,7 +6,6 @@ import TileHeader from './TileHeader';
 
 const TileContainer = styled.div.attrs({ className: 'shadow' })`
 	border-radius: 15px;
-	min-height: ${(props) => props.minHeight || '250px'};
 `;
 
 const InnerContainer = styled.div`
@@ -20,8 +19,8 @@ const ContentContainer = styled.div`
 	align-items: center;
 `;
 
-const Tile = ({ title, children, position, minHeight, toggle, value, setValue }) => (
-	<TileContainer className={`${toggle && !value ? 'bg-gray-300' : 'bg-gray-50'} ${position}`} minHeight={minHeight}>
+const Tile = ({ title, className, children, height, toggle, value, setValue }) => (
+	<TileContainer className={`${toggle && !value ? 'bg-gray-300' : 'bg-gray-50'} tile ${className}`} height={height}>
 		<InnerContainer className="w-full h-full">
 			<TileHeader title={title} toggle={toggle} value={value} setValue={setValue} />
 			<ContentContainer className="w-full h-full -mt-2">{children}</ContentContainer>
@@ -31,9 +30,9 @@ const Tile = ({ title, children, position, minHeight, toggle, value, setValue })
 
 Tile.propTypes = {
 	title: PropTypes.string,
+	className: PropTypes.string,
 	children: PropTypes.node,
-	position: PropTypes.string,
-	minHeight: PropTypes.string,
+	height: PropTypes.string,
 	toggle: PropTypes.bool,
 	value: PropTypes.bool,
 	setValue: PropTypes.func

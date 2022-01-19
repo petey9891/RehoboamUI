@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Switch } from '@headlessui/react';
 
@@ -22,7 +21,7 @@ const Section = styled.div`
 	width: 100%;
 `;
 
-export const Brightness = ({ position }) => {
+export const Brightness = () => {
 	const [display, setDisplay] = useState(true);
 	const [brightness, setBrightness] = useState(100);
 
@@ -37,7 +36,7 @@ export const Brightness = ({ position }) => {
 	};
 
 	return (
-		<Tile title="Brightness" position={position}>
+		<Tile className="brightnessTile" title="Brightness">
 			<InnerContainer className="w-full h-full px-10">
 				<Section>
 					<div className="text-gray-500">Display</div>
@@ -68,7 +67,4 @@ export const Brightness = ({ position }) => {
 	);
 };
 
-Brightness.propTypes = {
-	position: PropTypes.string
-};
 export default Brightness;

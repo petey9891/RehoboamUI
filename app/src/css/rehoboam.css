@@ -5,3 +5,77 @@
 body {
     background-color: rgb(229, 231, 235);
 }
+
+.tileContent {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+}
+
+.tile {
+    min-height: 280px;
+}
+
+@media (min-width: 640px) {
+    .tile {
+        grid-column: 1;
+    }
+
+    .colorTile {
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+
+    .powerTIle {
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+
+    .brightnessTile {
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+
+    .modeTile {
+        grid-row-start: 5;
+        grid-row-end: 6;
+        min-height: 300px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .tileContent {
+        grid-auto-flow: column;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(6, minmax(0, 1fr));
+    }
+
+    .tile {
+        grid-row: 1 / -1;
+        grid-column: span 1 / span 1;
+    }
+
+    .powerTIle, .brightnessTile, .modeTile {
+        grid-column: 2;
+    }
+
+    .colorTile {
+        grid-row-start: 1;
+        grid-row-end: 3
+    }
+
+    .powerTile {
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .brightnessTile {
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .modeTile {
+        grid-row-start: 3;
+        grid-row-end: 5;
+        max-height: 300px;
+    }
+}

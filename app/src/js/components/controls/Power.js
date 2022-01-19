@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Tile from '../common/Tile';
@@ -95,7 +94,7 @@ const PowerButtonIconArray = styled.span`
 	}
 `;
 
-export const Power = ({ position }) => {
+export const Power = () => {
 	const [power, setPower] = useState(true);
 	const [failsafe, setFailsafe] = useState(true);
 
@@ -107,7 +106,7 @@ export const Power = ({ position }) => {
 	};
 
 	return (
-		<Tile title="Power" position={position} toggle={true} value={!failsafe} setValue={() => setFailsafe(!failsafe)}>
+		<Tile title="Power" className="powerTile" toggle={true} value={!failsafe} setValue={() => setFailsafe(!failsafe)}>
 			<InnerContainer>
 				<PowerButton className={`${power ? 'shadow-inner' : 'shadow'}`} disabled={failsafe} onClick={handlePowerClick}>
 					<PowerButtonIcon isActive={power}>
@@ -117,10 +116,6 @@ export const Power = ({ position }) => {
 			</InnerContainer>
 		</Tile>
 	);
-};
-
-Power.propTypes = {
-	position: PropTypes.string
 };
 
 export default Power;

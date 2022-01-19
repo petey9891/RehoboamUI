@@ -16,14 +16,14 @@ const CheckIcon = () => {
 	);
 };
 
-export const Mode = ({ position, mode, setMode }) => {
+export const Mode = ({ mode, setMode }) => {
 	const handleSelected = (app) => {
 		setMode(app);
 		SocketManager.manager.setMode(app.id);
 	};
 
 	return (
-		<Tile title="Mode" position={position} minHeight="330px">
+		<Tile title="Mode" className="modeTile">
 			<div className="w-full px-10">
 				<RadioGroup value={mode} onChange={handleSelected}>
 					<RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
@@ -75,7 +75,6 @@ export const Mode = ({ position, mode, setMode }) => {
 };
 
 Mode.propTypes = {
-	position: PropTypes.string,
 	mode: PropTypes.shape({
 		id: PropTypes.string,
 		name: PropTypes.string,

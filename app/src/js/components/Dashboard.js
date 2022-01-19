@@ -11,12 +11,11 @@ import Power from './controls/Power';
 import Brightness from './controls/Brightness';
 import Mode from './controls/Mode';
 
-const largeGridCss = 'lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-6';
-const smallGridCss = 'grid-flow-row grid-cols-1 grid-rows-10';
-
 const ControlsContainer = styled.div.attrs({
-	className: `max-w-7xl mx-10 xl:mx-auto py-6 sm:px-6 lg:px-8 h-auto grid gap-4 ${smallGridCss} ${largeGridCss}`
+	className: `max-w-7xl mx-10 xl:mx-auto py-6 sm:px-6 lg:px-8 h-auto tileContent`
 })`
+	display: grid;
+	grid-gap: 1rem;
 	margin-top: -8rem;
 	border-radius: 15px;
 `;
@@ -75,10 +74,10 @@ export const Dashboard = () => {
 			</header>
 			<main>
 				<ControlsContainer>
-					<Color position="sm:col-span-2 lg:col-span-1 sm:row-span-2 lg:row-span-full" setMode={setMode} />
-					<Power position="sm:col-span-2 lg:col-span-1 row-span-2" />
-					<Brightness position="sm:col-span-2 lg:col-span-1 row-span-2" />
-					<Mode position="sm:col-span-2 lg:col-span-1 row-span-2" mode={mode} setMode={setMode} />
+					<Color setMode={setMode} />
+					<Power />
+					<Brightness />
+					<Mode mode={mode} setMode={setMode} />
 				</ControlsContainer>
 			</main>
 		</div>

@@ -52,7 +52,7 @@ const hexToRgb = (hex) => {
 		: null;
 };
 
-export const Color = ({ position, setMode }) => {
+export const Color = ({ setMode }) => {
 	const [color, setColor] = useState();
 
 	const handleColorSelect = (value) => {
@@ -62,7 +62,7 @@ export const Color = ({ position, setMode }) => {
 	};
 
 	return (
-		<Tile title="Color" position={position}>
+		<Tile title="Color" className="colorTile">
 			<InnerContainer className="w-full h-full px-10">
 				<ColorContainer className="bg-gray-100 w-full h-3/4">
 					<ColorPicker color={color} onChange={handleColorSelect} />
@@ -85,7 +85,6 @@ export const Color = ({ position, setMode }) => {
 };
 
 Color.propTypes = {
-	position: PropTypes.string,
 	setMode: PropTypes.func
 };
 
